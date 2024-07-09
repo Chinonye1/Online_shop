@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Cart } from "./Component/Cart";
+import CategoryDetail from "./Component/CategoryDetail";
+import ShippingAddressForm from "./Component/ShippingAddressForm";
+import Checkout from "./pages/Checkout";
+import "./App.css";
+import PaymentForm from "./pages/Payment";
+import { CartProvider } from "./Component/CartContext";
 
-function App() {
+const paymentOptions = {
+  "client-id":
+    "AdaszSg8kdpu0_0REty4SH1NXncRaWJ2EaBMf0yOoDQpVIndCk20kiDnRplDPsCGKixtwDGGr1DPgiZ4",
+  Currency: "USD",
+  intent: "capture",
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PayPalScriptProvider options={paymentOptions}>
+      <BrowserRouter>
+      <CartProvider>  
+        <div>
+          <Routes>
+            <Route path="/" element={<Cart />} />
+            <Route path="/product/:id" element={<CategoryDetail />} />
+            <Route path="/shipping" element={<ShippingAddressForm />} />
+
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/paymentForm" element={<PaymentForm/>} />
+          </Routes>
+        </div>
+        </CartProvider>
+      </BrowserRouter>
+    </PayPalScriptProvider>
   );
-}
+};
 
 export default App;
