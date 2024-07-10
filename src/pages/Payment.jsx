@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { ArrowLeft, CreditCard, Check } from 'lucide-react';
+import { ArrowLeft, Check, CreditCard } from "lucide-react";
+import React, { useState } from "react";
 import { useCartContext } from "../Component/CartContext";
 
 const PaymentForm = () => {
-  const [paymentMethod, setPaymentMethod] = useState('Card Payment');
+  const [paymentMethod, setPaymentMethod] = useState("Card Payment");
   const { subtotal, deliveryFee, total, form } = useCartContext();
   const [orderFinalized, setOrderFinalized] = useState(false);
 
-const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setOrderFinalized(true);
-};
+  };
 
   if (orderFinalized) {
     return (
@@ -19,14 +19,16 @@ const handleSubmit = (e) => {
           <div className="button w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="text-white" size={32} />
           </div>
-          <h2 className="text-xl font-semibold mb-2">Thank you for your order</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            Thank you for your order
+          </h2>
           <p className="text-gray-600 mb-6">Your order is placed</p>
           <button className="w-ful button text-white py-3 rounded font-semibold mb-2">
-            View Order
-          </button>
-          <button className="w-full bg-white button py-3 rounded font-semibold border button">
             Continue Shopping
           </button>
+          {/* <button className="w-full bg-white button py-3 rounded font-semibold border ">
+            Continue Shopping
+          </button> */}
         </div>
       </div>
     );
@@ -38,7 +40,7 @@ const handleSubmit = (e) => {
         <ArrowLeft className="mr-2" />
         <h1 className="text-xl font-semibold">Checkout</h1>
       </div>
-      
+
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
           <h2 className="font-semibold">Delivery</h2>
@@ -46,10 +48,12 @@ const handleSubmit = (e) => {
         </div>
         <div className="text-sm text-gray-600 space-y-1">
           <p className="flex justify-between">
-            <span>{form.firstName} {form.surname}</span>
+            <span>
+              {form.firstName} {form.surname}
+            </span>
             {form.middleName && <span>{form.middleName}</span>}
           </p>
-          <p>{form.homeAddress || 'No home address provided'}</p>
+          <p>{form.homeAddress || "No home address provided"}</p>
           {form.officeAddress && <p>{form.officeAddress}</p>}
           {form.pickUpPoint && <p>Pick-up point: {form.pickUpPoint}</p>}
           <p>{form.countryCode}</p>
@@ -60,8 +64,11 @@ const handleSubmit = (e) => {
       <div className="mb-6">
         <h2 className="font-semibold mb-2">Payment method</h2>
         <div className="space-y-2">
-          {['Card Payment', 'Bank Transfer', 'USSD'].map((method) => (
-            <label key={method} className="flex items-center p-2 border rounded">
+          {["Card Payment", "Bank Transfer", "USSD"].map((method) => (
+            <label
+              key={method}
+              className="flex items-center p-2 border rounded"
+            >
               <input
                 type="radio"
                 name="paymentMethod"
@@ -71,7 +78,7 @@ const handleSubmit = (e) => {
                 className="mr-2"
               />
               {method}
-              {method === 'Card Payment' && <CreditCard className="ml-auto" />}
+              {method === "Card Payment" && <CreditCard className="ml-auto" />}
             </label>
           ))}
         </div>

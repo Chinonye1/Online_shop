@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, Bell } from 'lucide-react';
 
 const Header = ({ cartItemCount, onCartClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Category', path: '/category' },
-    { name: 'Featured Collection', path: '/featured' },
-    { name: 'Support', path: '/support' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Category', path: '/' },
+    { name: 'Featured Collection', path: '/' },
+    { name: 'Support', path: '/' },
+    { name: 'Contact', path: '/' },
   ];
 
   return (
@@ -30,13 +30,10 @@ const Header = ({ cartItemCount, onCartClick }) => {
             ))}
           </nav>
 
-          {/* Desktop Icons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button aria-label="Search" className="focus:outline-none">
-              <Search className="h-6 w-6 text-gray-700" />
-            </button>
-            <button aria-label="User profile" className="focus:outline-none">
-              <User className="h-6 w-6 text-gray-700" />
+          {/* Icons (visible on both desktop and mobile) */}
+          <div className="flex items-center space-x-4">
+            <button aria-label="Notifications" className="focus:outline-none">
+              <Bell className="h-6 w-6 text-gray-700" />
             </button>
             <button onClick={onCartClick} className="relative focus:outline-none" aria-label="Shopping cart">
               <ShoppingCart className="h-6 w-6 text-gray-700" />
@@ -46,22 +43,22 @@ const Header = ({ cartItemCount, onCartClick }) => {
                 </span>
               )}
             </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-              aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                aria-expanded={isMenuOpen}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -87,14 +84,6 @@ const Header = ({ cartItemCount, onCartClick }) => {
               </button>
               <button aria-label="Search" className="ml-auto focus:outline-none">
                 <Search className="h-6 w-6 text-gray-700" />
-              </button>
-              <button onClick={onCartClick} className="ml-4 relative focus:outline-none" aria-label="Shopping cart">
-                <ShoppingCart className="h-6 w-6 text-gray-700" />
-                {cartItemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                    {cartItemCount}
-                  </span>
-                )}
               </button>
             </div>
           </div>
