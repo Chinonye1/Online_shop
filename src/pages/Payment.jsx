@@ -16,15 +16,15 @@ const handleSubmit = (e) => {
     return (
       <div className="max-w-md mx-auto p-4 text-center">
         <div className="bg-white p-8 rounded-lg shadow-md">
-          <div className="bg-blue-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="button w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="text-white" size={32} />
           </div>
           <h2 className="text-xl font-semibold mb-2">Thank you for your order</h2>
           <p className="text-gray-600 mb-6">Your order is placed</p>
-          <button className="w-full bg-blue-800 text-white py-3 rounded font-semibold mb-2">
+          <button className="w-ful button text-white py-3 rounded font-semibold mb-2">
             View Order
           </button>
-          <button className="w-full bg-white text-blue-800 py-3 rounded font-semibold border border-blue-800">
+          <button className="w-full bg-white button py-3 rounded font-semibold border button">
             Continue Shopping
           </button>
         </div>
