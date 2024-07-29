@@ -3,12 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Demo
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Live Demo
-<iframe src="https://nonyeshop.netlify.app/" width="100%" height="500px"></iframe>
+Check out the live demo [here](https://nonyeshop.netlify.app/).
 
 
 ## Available Scripts
